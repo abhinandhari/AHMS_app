@@ -34,11 +34,14 @@ public class MainActivity extends AppCompatActivity {
     TextView time;
     ListView studentlistview;
     EditText edit;
-    Button search;
     LinearLayout linearLayout1;
     List<Student> studentList;
     Context context;
-    public void runner(){
+    Button nostay;
+    Button s1;
+    Button s2;
+
+    public void runner() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("Api : ", call.request().url().toString());
                 Log.v("Api : ", response.body().toString());
                 studentList = response.body();
-                StudentAdapter students = new StudentAdapter(context,studentList);
+                StudentAdapter students = new StudentAdapter(context, studentList);
                 studentlistview = findViewById(R.id.lister);
                 studentlistview.setAdapter(students);
             }
@@ -59,12 +62,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t) {
 
-                Log.v("Api :","Failed...");
+                Log.v("Api :", "Failed...");
             }
         });
     }
-
-
 
 
     @Override
@@ -86,51 +87,161 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.time);
         linearLayout1 = findViewById(R.id.search);
         edit = findViewById(R.id.edit_text);
-        search = findViewById(R.id.searchbutton);
+        s1 = findViewById(R.id.searchbutton);
+        s1.setVisibility(View.GONE);
+        s2 = findViewById(R.id.searchbutton2);
+        s2.setVisibility(View.GONE);
         linearLayout1.setVisibility(View.GONE);
+        nostay = findViewById(R.id.nostay);
+        edit.setHint("Enter details...");
         runner();
     }
-    public void idgen(View v){
+
+    public void idgen(View v) {
+        s1.setVisibility(View.VISIBLE);
+        s2.setVisibility(View.GONE);
         linearLayout1.setVisibility(View.VISIBLE);
-        search.setOnClickListener(new View.OnClickListener() {
+        s1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int i;
                 List<Student> temp = new ArrayList<>();
+                String tmpstr="";
                 String id = edit.getText().toString();
-                int l=id.length();
+                int l = id.length();
                 if(l>4&&l<17)
-                    id=id.substring(l-5,l);
-                for(i=0;i<studentList.size();i++){
-                    if(id.equals(studentList.get(i).getStudentId().toString())){
-                        temp.add(studentList.get(i));
-                        break;
+                    tmpstr = id.substring(l - 5, l);
+                Integer p = null;
+                try {
+                    p = Integer.parseInt(tmpstr);
+                } catch (NumberFormatException E) {
+                    p = null;
+                }
+                if (p == null) {
+                    id = id.toLowerCase();
+                    Log.v("ID = ", id);
+                    for (i = 0; i < studentList.size(); i++) {
+                        //Log.v("Student name =", studentList.get(i).getFirstName().toLowerCase());
+                        if (id.equals(""))
+                            break;
+                        if (id.equals(studentList.get(i).getFirstName().toLowerCase())) {
+                            temp.add(studentList.get(i));
+                          //  Log.v("Student name =", studentList.get(i).getFirstName().toLowerCase());
+                        }
+                        if (id.equals(studentList.get(i).getLastName().toLowerCase())) {
+                            temp.add(studentList.get(i));
+                          //  Log.v("Student name =", studentList.get(i).getLastName().toLowerCase());
+                        }
+                        if (id.equals(studentList.get(i).getFirstName().toLowerCase() + " " + studentList.get(i).getLastName().toLowerCase())) {
+                            temp.add(studentList.get(i));
+                          //  Log.v("Student name =", studentList.get(i).getFirstName().toLowerCase()+" "+studentList.get(i).getLastName().toLowerCase());
+                        }
+                        Log.v("Student name =", studentList.get(i).getFirstName().toLowerCase()+" "+studentList.get(i).getLastName().toLowerCase());
+                    }
+                    if (temp.size() == 0 || i == 0) {
+                        temp.add(new Student("-", "-", "-", 0, "-", "-", 0, "-"));
+                    }
+                } else {
+                    for (i = 0; i < studentList.size(); i++) {
+                        if (tmpstr.equals(""))
+                            break;
+                        if (tmpstr.equals(studentList.get(i).getStudentId().toString())) {
+                            temp.add(studentList.get(i));
+                            break;
+                        }
+                    }
+                    if (i == studentList.size() || i == 0) {
+                        temp.add(new Student("-", "-", "-", 0, "-", "-", 0, "-"));
                     }
                 }
-                if(i==studentList.size()){
-                    temp.add(new Student("-","-","-",0,"-","-",0,"-"));
-                }
-                StudentAdapter students = new StudentAdapter(context,temp);
+                StudentAdapter students = new StudentAdapter(context, temp);
                 studentlistview = findViewById(R.id.lister);
                 studentlistview.setAdapter(students);
             }
         });
     }
-    public void refreshes(View v){
+
+    public void refreshes(View v) {
         linearLayout1.setVisibility(View.GONE);
         runner();
     }
-    public void staybacker(View v){
-        linearLayout1.setVisibility(View.INVISIBLE);
+
+    public void staybacker(View v) {
         int i;
         List<Student> temp = new ArrayList<>();
-        for(i=0;i<studentList.size();i++){
-            if(studentList.get(i).getHasStayback()==1){
+        for (i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getHasStayback() == 1) {
                 temp.add(studentList.get(i));
             }
         }
-        StudentAdapter students = new StudentAdapter(context,temp);
+        StudentAdapter students = new StudentAdapter(context, temp);
         studentlistview = findViewById(R.id.lister);
         studentlistview.setAdapter(students);
+    }
+
+    public void nostaybacker(View v) {
+        int i;
+        List<Student> temp = new ArrayList<>();
+        for (i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getHasStayback() == 0) {
+                temp.add(studentList.get(i));
+            }
+        }
+        StudentAdapter students = new StudentAdapter(context, temp);
+        studentlistview = findViewById(R.id.lister);
+        studentlistview.setAdapter(students);
+    }
+
+    public void byname(View v) {                    //This function and the corresponding button wasnt necessary, I just did this in
+        linearLayout1.setVisibility(View.VISIBLE);  //order to understand the flow of control
+        s1.setVisibility(View.VISIBLE);
+        s2.setVisibility(View.GONE);
+        idgen(v);
+    }
+
+    public void fetch(View view) {
+        s1.setVisibility(View.GONE);
+        s2.setVisibility(View.VISIBLE);
+        linearLayout1.setVisibility(View.VISIBLE);
+        s2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final List<Student> temp = new ArrayList<>();
+                String id = edit.getText().toString();
+                int l = id.length();
+                if (l != 16) {
+                    temp.add(new Student("-", "-", "-", 0, "-", "-", 0, "-"));
+                } else {
+                    id = id.substring(11, 16);
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(Api.BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    Api2 api = retrofit.create(Api2.class);
+                    Call<List<Student>> call = api.getStudent(id);
+                    call.enqueue(new Callback<List<Student>>() {
+                        @Override
+                        public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
+                            Log.v("api", call.request().url().toString());
+                            studentList = response.body();
+                            Log.v("test", response.body().toString());
+                            if (response.body().toString().equals("[]")) {
+                                    temp.add(new Student("-", "-", "-", 0, "-", "-", 0, "-"));
+                            } else {
+                                    temp.add(studentList.get(0));
+                            }
+
+                        }
+                                     @Override
+                                     public void onFailure(Call<List<Student>> call, Throwable t) {
+                                         Log.v("Api", call.request().url().toString());
+                                     }
+                    });
+                }
+                StudentAdapter students = new StudentAdapter(context, temp);
+                studentlistview = findViewById(R.id.lister);
+                studentlistview.setAdapter(students);
+            }
+        });
     }
 }

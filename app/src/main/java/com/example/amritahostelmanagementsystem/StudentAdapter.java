@@ -42,7 +42,7 @@ public class StudentAdapter extends ArrayAdapter<Student> { //to add views. This
         time=listItemView.findViewById(R.id.time);
         date.setText(currentStudent.getDate());
         facultyName.setText(currentStudent.getFacultyName());
-        name.setText(currentStudent.getFirstName()+currentStudent.getLastName());
+        name.setText(currentStudent.getFirstName()+" "+currentStudent.getLastName());
         if(currentStudent.getHasStayback().toString().equals("1")) {
             stayback.setText("Has Stayback");
             stayback.setTextColor(0xff22ff22);

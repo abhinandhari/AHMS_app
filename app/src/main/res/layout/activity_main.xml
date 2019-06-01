@@ -24,99 +24,103 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/refresher"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Refresh"
-            android:onClick="refreshes"/>
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/id"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="By ID"
-            android:onClick="idgen"/>
+            <Button
+                android:id="@+id/refresher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="refreshes"
+                android:text="Refresh" />
 
-        <Button
-            android:id="@+id/stay"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Staybacks"
-            android:onClick="staybacker"/>
+            <Button
+                android:id="@+id/id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="idgen"
+                android:text="By ID(Local)" />
+
+            <Button
+                android:id="@+id/stay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="staybacker"
+                android:text="Staybacks" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/nostay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="nostaybacker"
+                android:text="No STAYBACKS" />
+
+            <Button
+                android:id="@+id/onid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="fetch"
+                android:text="BY ID(Online)" />
+
+            <Button
+                android:id="@+id/byname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="byname"
+                android:text="By Name" />
+        </LinearLayout>
+
+
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible">
+
+<LinearLayout
+    android:id="@+id/search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="invisible">
+
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter AM.XX.XXXXX*****"
         android:layout_weight="3" />
-        <Button
-            android:id="@+id/searchbutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Enter"
-            android:layout_weight="1" />
-    </LinearLayout>
-   <ListView
+
+    <Button
+        android:id="@+id/searchbutton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Enter" />
+    <Button
+        android:id="@+id/searchbutton2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Enter" />
+</LinearLayout>
+
+
+    <ListView
         android:id="@+id/lister"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10">
 
-   </ListView>
- <!--   <TextView
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAMPLE"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/faculty_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAMPLE"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAMPLE"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/stayback"
-        android:text="SAMPLE"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/reason"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAMPLE"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/studentid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAMPLE"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAMPLE"
-        android:textSize="20sp"/> -->
-
+    </ListView>
 </LinearLayout>
