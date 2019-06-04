@@ -39,3 +39,8 @@ This project is licensed under the MIT License, see the LICENSE https://github.c
 
 ### A WORD OF THANKS TO MY MENTORS, RAJENDRA AND ABHILASH BHAIYYA, FOR ALLOWING ME TO GET THIS FAR, WITHIN SUCH A SHORT SPAN OF TIME.
 https://github.com/AbhilashG97 , https://github.com/immadisairaj .
+
+###Screenshots
+
+<img src ="screenshots/Screenshot_20190604-211023.png" width ="350" height ="500">
+<img src ="screenshots/Screenshot_20190604-211023.png" width ="350" height ="500">
