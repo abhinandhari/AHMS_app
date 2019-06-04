@@ -43,4 +43,8 @@ https://github.com/AbhilashG97 , https://github.com/immadisairaj .
 ###Screenshots
 
 <img src ="screenshots/Screenshot_20190604-211023.png" width ="350" height ="500">
-<img src ="screenshots/Screenshot_20190604-211023.png" width ="350" height ="500">
+<img src ="screenshots/Screenshot_20190604-211026.png" width ="350" height ="500">
+<img src ="screenshots/Screenshot_20190604-211030.png" width ="350" height ="500">
+<img src ="screenshots/Screenshot_20190604-211040.png" width ="350" height ="500">
+<img src ="screenshots/Screenshot_20190604-211034.png" width ="350" height ="500">
+<img src ="screenshots/Screenshot_20190604-212020.png" width ="350" height ="500">
