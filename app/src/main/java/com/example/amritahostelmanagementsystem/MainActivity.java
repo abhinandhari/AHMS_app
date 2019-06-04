@@ -1,6 +1,9 @@
 package com.example.amritahostelmanagementsystem;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
     Button nostay;
     Button s1;
     Button s2;
-
+    Button onid;
+    Button refresher;
+    Button byname;
     public void runner() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
@@ -66,7 +71,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void executer(){
+        onid.setBackgroundColor(Color.GRAY);
+        byname.setBackgroundColor(Color.GRAY);
+        refresher.setBackgroundColor(Color.GRAY);
+        staybackbutton.setBackgroundColor(Color.GRAY);
+        idgen.setBackgroundColor(Color.GRAY);
+        nostay.setBackgroundColor(Color.GRAY);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +106,15 @@ public class MainActivity extends AppCompatActivity {
         linearLayout1.setVisibility(View.GONE);
         nostay = findViewById(R.id.nostay);
         edit.setHint("Enter details...");
+        onid=findViewById(R.id.onid);
+        byname=findViewById(R.id.byname);
+        refresher=findViewById(R.id.refresher);
+        executer();
         runner();
     }
 
     public void idgen(View v) {
+        executer();
         s1.setVisibility(View.VISIBLE);
         s2.setVisibility(View.GONE);
         linearLayout1.setVisibility(View.VISIBLE);
@@ -118,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     p = null;
                 }
                 if (p == null) {
+                    byname.setBackgroundColor(Color.GREEN);
                     id = id.toLowerCase();
                     Log.v("ID = ", id);
                     for (i = 0; i < studentList.size(); i++) {
@@ -142,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         temp.add(new Student("-", "-", "-", 0, "-", "-", 0, "-"));
                     }
                 } else {
+                    idgen.setBackgroundColor(Color.GREEN);
                     for (i = 0; i < studentList.size(); i++) {
                         if (tmpstr.equals(""))
                             break;
@@ -150,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         }
                     }
-                    if (i == studentList.size() || i == 0) {
+                    if (i==studentList.size()||tmpstr.equals("")) {
                         temp.add(new Student("-", "-", "-", 0, "-", "-", 0, "-"));
                     }
                 }
@@ -162,11 +181,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void refreshes(View v) {
+        executer();
+        refresher.setBackgroundColor(Color.GREEN);
         linearLayout1.setVisibility(View.GONE);
         runner();
     }
 
     public void staybacker(View v) {
+        executer();
+        staybackbutton.setBackgroundColor(Color.GREEN);
         int i;
         List<Student> temp = new ArrayList<>();
         for (i = 0; i < studentList.size(); i++) {
@@ -180,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nostaybacker(View v) {
+        executer();
+        nostay.setBackgroundColor(Color.GREEN);
         int i;
         List<Student> temp = new ArrayList<>();
         for (i = 0; i < studentList.size(); i++) {
@@ -200,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fetch(View view) {
+        executer();
+        onid.setBackgroundColor(Color.GREEN);
         s1.setVisibility(View.GONE);
         s2.setVisibility(View.VISIBLE);
         linearLayout1.setVisibility(View.VISIBLE);

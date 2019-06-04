@@ -32,6 +32,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:padding="2dp"
                 android:id="@+id/refresher"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                 android:text="Refresh" />
 
             <Button
+                android:padding="2dp"
                 android:id="@+id/id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -48,6 +50,7 @@
                 android:text="By ID(Local)" />
 
             <Button
+                android:padding="2dp"
                 android:id="@+id/stay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -62,6 +65,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:padding="2dp"
                 android:id="@+id/nostay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -70,6 +74,7 @@
                 android:text="No STAYBACKS" />
 
             <Button
+                android:padding="2dp"
                 android:id="@+id/onid"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -78,6 +83,7 @@
                 android:text="BY ID(Online)" />
 
             <Button
+                android:padding="2dp"
                 android:id="@+id/byname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
