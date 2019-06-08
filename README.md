@@ -2,9 +2,9 @@
 This is my first try to create an Android client for Hostel Management for Amrita University, along with FOSS@amrita
 
 ### Tip to Note :
-  -There are certain loopholes present . They are listed as comments in the project, and are soley made by myself in order to understand the flow of control.
-  -Since not done with recyclerview, there is less memory optimisation. Will fix later.
-  -Also done with Java, Built with :bold Android Studio.
+  - There are certain loopholes present . They are listed as comments in the project, and are soley made by myself in order to understand the flow of control.
+  - Since not done with recyclerview, there is less memory optimisation. Will fix later.
+  - Also done with Java, Built with :bold Android Studio.
   
 ### Installing
 
